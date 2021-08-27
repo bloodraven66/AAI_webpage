@@ -2,10 +2,12 @@
 
 <h4>INFO:</h2>
 Tasks:
+
 - Acoustic to articulatory inversion (AAI)
 - Phoneme to articulatory estimation (PTA)
 
 Models:
+
 - Hidden Markov Model (HMM)
 - Gaussian Mixture Model (GMM)
 - Deep Neural Networks (DNN)
