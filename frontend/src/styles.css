@@ -1,0 +1,156 @@
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+body {
+  overflow: hidden; /* Hide scrollbars */
+}
+
+/* img {
+  border: 3px dashed #bbb;
+} */
+.element {
+  position: relative;
+}Mod Supreme (Master of Mystic AMAs)
+
+
+.tooltip {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 3px;
+  border: 1px solid black;
+  width: 750px;
+  min-width: 75px;
+  max-width: 255px;
+}
+
+.element:hover .tooltip {
+  display: block;
+}
+
+.leftHalf {
+   width: 50%;
+   position: absolute;
+   left: 0px;
+   height: 100%;
+
+}
+.subtitle {
+  text-align: center;
+}
+.rightHalf {
+   width: 50%;
+   position: absolute;
+   right: 0px;
+   height: 100%;
+
+}
+
+h4 {
+  margin: 3px;
+}
+h3 {
+  margin: 9px;
+}
+
+h2 {
+  font-family: "Arial", sans-serif;
+  margin: 0.2em auto;
+}
+.res-circle {
+  width: 3%;
+  border-radius: 50%;
+  border: 1px solid grey;
+  background: #E8E8E8;
+
+  line-height: 0;
+  position: relative;
+
+}
+
+hr.dashed {
+  border-top: 3px dashed #bbb;
+  margin: 0.1em auto;
+}
+
+.res-circle::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.circle-txt {
+  position: absolute;
+  bottom: 50%;
+  width: 100%;
+  text-align: center;
+
+  font-family: arial, sans-serif;
+}
+
+
+.btn-design:enabled {
+
+	color: #494949 !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #ffffff;
+  font-size: 15px;
+	padding: 4px;
+	border: 2px solid #494949 !important;
+	display: inline-block;
+	transition: all 0.4s ease 0s;
+  border-radius: 10px;
+    outline: none;
+}
+
+
+.btn-design:disabled {
+
+	color: #49 !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #ffffff;
+  font-size: 15px;
+	padding: 4px;
+	border: 2px solid #494949 !important;
+	display: inline-block;
+	transition: all 0.4s ease 0s;
+  border-radius: 10px;
+  outline: none;
+}
+.btn-design:hover:enabled {
+
+	color: #303030 !important;
+	background: #E8E8E8;
+	border-color: #303030 !important;
+	transition: all 0.4s ease 0s;
+  outline: none;
+}
+.btn-design-upload:hover {
+
+	color: #303030 !important;
+	background: #E8E8E8;
+	border-color: #303030 !important;
+	transition: all 0.4s ease 0s;
+    outline: none;
+}
+
+.btn-design-upload {
+
+	color: #494949 !important;
+	text-transform: uppercase;
+	text-decoration: none;
+	background: #ffffff;
+  font-size: 15px;
+	padding: 4px;
+	border: 2px solid #494949 !important;
+	display: inline-block;
+	transition: all 0.4s ease 0s;
+  border-radius: 10px;
+  outline: none;
+}
