@@ -18,7 +18,13 @@ Models:
 - Tacotron
 - FastSpeech
 
+Frameworks:
+
+- Frontend: ReactJS
+- Backend Inference: Pytorch & Keras
+- Backend Hosting: Python Fastapi + gunicorn
+
 <h4>TODO:</h2>
 
-- refactor codes & update current preprocessing steps
+- refactor codes & update current preprocessing, postprocessing steps
 - Document updated dockerizing
