@@ -26,5 +26,5 @@ Frameworks:
 
 <h4>TODO:</h2>
 
-- refactor codes & update current preprocessing, postprocessing steps
+- Refactor codes & update current preprocessing, postprocessing steps
 - Document updated dockerizing
