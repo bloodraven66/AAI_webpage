@@ -2,6 +2,8 @@
 
 <h4>INFO:</h2>
 
+The webpage can be accessed <a href='https://spire.ee.iisc.ac.in/spire/aaidemo.php'>here</a> 
+
 Tasks:
 
 - Acoustic to articulatory inversion (AAI)
