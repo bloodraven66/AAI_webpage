@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 // import RecordingPage from '/home/sathvik/Documents/AAI_webpage/frontend/src/recordingPage'
-import RecordingPage from '/data1/Code/Sathvik/webpage_AAI/frontend/src/recordingPage'
-import PlotPage from '/data1/Code/Sathvik/webpage_AAI/frontend/src/plotPage'
+import RecordingPage from '/home/sathvik/Documents/frontend/src/recordingPage'
+import PlotPage from '/home/sathvik/Documents/frontend/src/plotPage'
 var jsonResponseMean = 0;
 var jsonResponseSTD = 0;
 
@@ -41,12 +41,8 @@ class LandingPage extends Component {
     document.getElementById("save1").disabled = false;
   };
   onChangeIcon3 = event => {
-    // document.getElementById("save1").disabled = true;
   };
 
-  // <button id='playUploaded' class='btn-design' disabled={!this.state.value}>
-  //   Play
-  // </button>
   async componentDidMount() {
     document.title = "Articulatory Estimation"
     window.scrollTo(-100, -100)
@@ -115,15 +111,7 @@ class LandingPage extends Component {
       this.setState({ recording: false });
       clearInterval(interval);
     });
-    // onFileChange = event => {
-    //   this.state.playUploaded.removeAttribute("disabled");
-    //   this.setState({ selectedFile: event.target.files[0] });
-    // };
 
-
-    // playUploaded.addEventListener("click", () => {
-    //     this.state.selectedFile.play();
-    //     });
     saveButton.addEventListener("click", () => {
     const XHR_upload = new XMLHttpRequest();
     const FD = new FormData()
@@ -131,11 +119,11 @@ class LandingPage extends Component {
     FD.append('file', audio.audioBlob);
     FD.append('key', user_id);
     console.log(user_id)
-    XHR_upload.open('POST', "https://10.64.26.89:3001/uploadbytes/");
+    XHR_upload.open('POST', "http://0.0.0.0:3001/uploadbytes/");
     var e = document.getElementById("ddlViewBy");
     var strUser = e.options[e.selectedIndex].text;
     const XHR2 = new XMLHttpRequest();
-    XHR2.open('POST', "https://10.64.26.89:3001/sendModelName/");
+    XHR2.open('POST', "http://0.0.0.0:3001/sendModelName/");
     XHR2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     XHR2.send(JSON.stringify({ "file": strUser, "key": user_id}))
     XHR_upload.send(FD);
@@ -143,10 +131,10 @@ class LandingPage extends Component {
       console.log('here')
    		var jsonResponse = JSON.parse(XHR_upload.responseText);
       console.log(jsonResponse)
-		if (jsonResponse == 'done'){
+		if (jsonResponse === 'done'){
 
         const XHR_upload = new XMLHttpRequest();
-        XHR_upload.open('POST', "https://10.64.26.89:3001/plot/");
+        XHR_upload.open('POST', "http://0.0.0.0:3001/plot/");
         XHR_upload.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         XHR_upload.send(JSON.stringify({"file":"ping","key": user_id}))
         XHR_upload.onload  = function() {
@@ -154,7 +142,7 @@ class LandingPage extends Component {
           document.getElementById('imageBox').src = "data:image/png;base64," + jsonResponse;
 
           const XHRcc = new XMLHttpRequest();
-          XHRcc.open('POST', "https://10.64.26.89:3001/getcc/");
+          XHRcc.open('POST', "http://0.0.0.0:3001/getcc/");
           XHRcc.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
           XHRcc.send(JSON.stringify({"key": user_id, "file": "returnCC"}))
           XHRcc.onload  = function() {
@@ -163,11 +151,9 @@ class LandingPage extends Component {
             jsonResponseMean = JSON.parse(XHRcc.responseText).mean
             jsonResponseSTD = JSON.parse(XHRcc.responseText).std
 
-            // document.getElementById('imageBox').src = "data:image/png;base64," + jsonResponse;
-            if (jsonResponseMean != 'none') {
+            if (jsonResponseMean !== 'none') {
               console.log(jsonResponseMean, jsonResponseSTD)
                 document.getElementById("ccDiv").innerHTML = 'Correlation Coefficient: '+ jsonResponseMean+'('+jsonResponseSTD + ')';
-                // this.setState({ showCCStore: true });
 
                   document.getElementById('ccDiv').style.display = 'block';
             }
@@ -209,23 +195,23 @@ class LandingPage extends Component {
     var strUser = e.options[e.selectedIndex].text;
 
       const XHR2 = new XMLHttpRequest();
-      XHR2.open('POST', "https://10.64.26.89:3001/sendModelName/");
+      XHR2.open('POST', "http://0.0.0.0:3001/sendModelName/");
       XHR2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
       XHR2.send(JSON.stringify({ "file": strUser, "key": user_id}))
 
 
     const XHR = new XMLHttpRequest();
-    XHR.open('POST', "https://10.64.26.89:3001/upload/");
+    XHR.open('POST', "http://0.0.0.0:3001/upload/");
 
     XHR.send(formData);
     XHR.onload  = function() {
       console.log('here')
    		var jsonResponse = JSON.parse(XHR.responseText);
-      console.log(jsonResponse)
+      console.log(jsonResponse, )
 		if (jsonResponse == 'done'){
-
+      console.log('received')
         const XHR = new XMLHttpRequest();
-        XHR.open('POST', "https://10.64.26.89:3001/plot/");
+        XHR.open('POST', "http://0.0.0.0:3001/plot/");
         XHR.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         XHR.send(JSON.stringify({ "file":"ping", "key": user_id}))
         XHR.onload  = function() {
@@ -233,7 +219,7 @@ class LandingPage extends Component {
           document.getElementById('imageBox').src = "data:image/png;base64," + jsonResponse;
 
           const XHRcc = new XMLHttpRequest();
-          XHRcc.open('POST', "https://10.64.26.89:3001/getcc/");
+          XHRcc.open('POST', "http://0.0.0.0:3001/getcc/");
           XHRcc.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
           XHRcc.send(JSON.stringify({"key": user_id, "file": "returnCC"}))
           XHRcc.onload  = function() {
@@ -243,7 +229,7 @@ class LandingPage extends Component {
             jsonResponseSTD = JSON.parse(XHRcc.responseText).std
 
             // document.getElementById('imageBox').src = "data:image/png;base64," + jsonResponse;
-            if (jsonResponseMean != 'none') {
+            if (jsonResponseMean !== 'none') {
               console.log(jsonResponseMean, jsonResponseSTD)
                 document.getElementById("ccDiv").innerHTML = 'Correlation Coefficient: '+ jsonResponseMean+'('+jsonResponseSTD + ')';
                 // this.setState({ showCCStore: true });
@@ -277,12 +263,12 @@ class LandingPage extends Component {
       var strUser2 = e2.options[e2.selectedIndex].text;
 
         const XHR3 = new XMLHttpRequest();
-        XHR3.open('POST', "https://10.64.26.89:3001/sendModelNamePTA/");
+        XHR3.open('POST', "http://0.0.0.0:3001/sendModelNamePTA/");
         XHR3.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
         XHR3.send(JSON.stringify({ "file": strUser2, "key": user_id}))
 
       const XHR2 = new XMLHttpRequest();
-      XHR2.open('POST', "https://10.64.26.89:3001/sendText/");
+      XHR2.open('POST', "http://0.0.0.0:3001/sendText/");
       XHR2.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
       XHR2.send(JSON.stringify({ "file": textentry, "key": user_id}))
 
@@ -293,7 +279,7 @@ class LandingPage extends Component {
   		if (jsonResponse == 'done'){
 
           const XHR = new XMLHttpRequest();
-          XHR.open('POST', "https://10.64.26.89:3001/plot_p2e/");
+          XHR.open('POST', "http://0.0.0.0:3001/plot_p2e/");
           XHR.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
           XHR.send(JSON.stringify({ "file": "ping", "key": user_id}))
           XHR.onload  = function() {
@@ -301,7 +287,7 @@ class LandingPage extends Component {
             document.getElementById('imageBox2').src = "data:image/png;base64," + jsonResponse;
 
             const XHRcc = new XMLHttpRequest();
-            XHRcc.open('POST', "https://10.64.26.89:3001/getcc/");
+            XHRcc.open('POST', "http://0.0.0.0:3001/getcc/");
             XHRcc.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
             XHRcc.send(JSON.stringify({"key": user_id, "file": "returnCC"}))
             XHRcc.onload  = function() {
@@ -309,7 +295,7 @@ class LandingPage extends Component {
               jsonResponseMean = JSON.parse(XHRcc.responseText).mean
               jsonResponseSTD = JSON.parse(XHRcc.responseText).std
               // document.getElementById('imageBox').src = "data:image/png;base64," + jsonResponse;
-              if (jsonResponseMean != 'none') {
+              if (jsonResponseMean !== 'none') {
                 // console.log(jsonResponseMean, jsonResponseSTD)
                 document.getElementById("ccDiv").innerHTML = 'Correlation Coefficient: '+jsonResponseMean+'('+jsonResponseSTD + ')';
                   // this.setState({ showCCStore: true });
@@ -338,7 +324,7 @@ class LandingPage extends Component {
   disableImage = () => {
     document.getElementById('disable').setAttribute('disabled','disabled');
     const XHR = new XMLHttpRequest();
-    XHR.open('POST', "https://10.64.26.89:3001/reset_params/");
+    XHR.open('POST', "http://0.0.0.0:3001/reset_params/");
     XHR.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     XHR.send(JSON.stringify({"key":user_id, "file": "reset"}))
 
