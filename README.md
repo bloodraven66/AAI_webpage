@@ -2,7 +2,25 @@
 
 <h4>INFO:</h2>
 
-The webpage can be accessed <a href='https://spire.ee.iisc.ac.in/spire/aaidemo.php'>here</a> 
+The webpage is now offline. You can host it locally.
+
+Front end:
+
+- clone this repository
+- install npm
+- cd frontend
+- npm init (first time only)
+- npm install (first time only)
+- npm start (to start frontend, it will open in localhost)
+
+Backend:
+- Install docker with 'snap install docker'
+- You can  
+   1. download the saved docker image at ----   or
+   2. download the files at ----
+- For 1, 'sudo docker load -i webpage_docker_backup.tar'
+- For 2, unzip aai_pta_viz.zip, followed by 'sudo docker build -t aai_pta_viz'
+- To start backend, run 'sudo docker run --net=host aai_pta_viz' 
 
 Tasks:
 
@@ -26,7 +44,4 @@ Frameworks:
 - Backend Inference: Pytorch & Keras
 - Backend Hosting: Python Fastapi + gunicorn
 
-<h4>TODO:</h2>
 
-- Refactor codes & update current preprocessing, postprocessing steps
-- Document updated dockerizing
