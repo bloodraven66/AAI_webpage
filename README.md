@@ -16,8 +16,8 @@ Front end:
 Backend:
 - Install docker with 'snap install docker'
 - You can  
-   1. download the saved docker image at ----   or
-   2. download the files at ----
+   1. download the saved docker image (5.2gb) at ----   or
+   2. download the files (535mb) at ----
 - For 1, 'sudo docker load -i webpage_docker_backup.tar'
 - For 2, unzip aai_pta_viz.zip, followed by 'sudo docker build -t aai_pta_viz'
 - To start backend, run 'sudo docker run --net=host aai_pta_viz' 
