@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 // import RecordingPage from '/home/sathvik/Documents/AAI_webpage/frontend/src/recordingPage'
-import RecordingPage from '/home/sathvik/Documents/frontend/src/recordingPage'
-import PlotPage from '/home/sathvik/Documents/frontend/src/plotPage'
+import RecordingPage from 'recordingPage'
+import PlotPage from 'plotPage'
 var jsonResponseMean = 0;
 var jsonResponseSTD = 0;
 
